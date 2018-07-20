@@ -5,21 +5,31 @@ function calcDate(date1,date2) {
     var todayYear = date1.getFullYear();
     var birthDayYear = date2.getFullYear();
 
-    var todayMonth = date1.getMonth();
-    var birthDayMonth = date2.getMonth();
+    var todayMonth = date1.getMonth() + 1 ;
+    var birthDayMonth = date2.getMonth() + 1 ;
 
-    var year = todayYear - birthDayYear;
+    var todayDay = date1.getDate();
+    var birthdayDay = date2.getDate();
 
-    if( todayMonth < birthDayMonth )
-    {
-    	todayMonth += 12;
-    	year--;
+
+    if( todayDay < birthdayDay ){
+    	todayDay+=30;
+    	todayMonth--;
 
     }
+    if( todayMonth < birthDayMonth ){
+    	todayMonth+=12;
+    	todayYear--;
+    }
 
+    var year = todayYear - birthDayYear;
     var month = todayMonth - birthDayMonth;
+    var day = todayDay - birthdayDay;
 
-    message = year +" years "+month+" months ";
+    
+
+
+    message = year +" years "+month+" months "+day+" days";
 
 
 
@@ -52,7 +62,7 @@ window.onload = function()
 
 
 
-					document.getElementById('result').innerHTML= calcDate( today, birthday )+" <hr> @astro_lion "		
+					document.getElementById('result').innerHTML= calcDate( today, birthday );		
 
 
 			}
