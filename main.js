@@ -19,7 +19,7 @@ function calcDate(date1,date2) {
 
     var month = todayMonth - birthDayMonth;
 
-    message = year +":"+month;
+    message = year +" years "+month+" months ";
 
 
 
@@ -28,14 +28,37 @@ function calcDate(date1,date2) {
 }
 
 
+function parseDate(s) {
+  var b = s.split(/\D/);
+  return new Date(b[0], --b[1], b[2]);
+}
+
 window.onload = function()
 {
-	var today = new Date();
-	var birthDay = new Date(1992,06,01);
+	
+	chrome.storage.sync.get( 'bday', 
+		function(data)
+		{
+			if( typeof data.bday == 'undefined' ){
+				var s = "Set Your Birthday! <br> Right click the icon then select 'options' "
 
-	var a = calcDate( today, birthDay );
 
-	document.getElementById('result').innerHTML=a;
+				document.getElementById('result').innerHTML=s;
+			}
+			else{
+					var today = new Date();
+					var birthday = parseDate( data.bday );
+
+
+
+
+					document.getElementById('result').innerHTML= calcDate( today, birthday )+" <hr> @astro_lion "		
+
+
+			}
+		}
+
+	 );
 
 
 }
