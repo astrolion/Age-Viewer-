@@ -24,7 +24,8 @@
   "permissions": [
           "storage",
           "notifications",
-          "contextMenus"
+          "contextMenus",
+          "tabs"
         ],
 
   "options_page": "options.html"
