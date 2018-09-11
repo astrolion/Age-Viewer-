@@ -1,2 +1,3 @@
-# Age-Viewer-
-A google chrome extension project. 
+# Age Viewer
+Google Chrome Extension Project 
+for vieweing Age in daily basis. 
